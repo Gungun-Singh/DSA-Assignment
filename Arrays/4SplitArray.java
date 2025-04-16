@@ -5,53 +5,32 @@ sum of the suffix. Write its algorithm, program. Find its time and space complex
 package Strings;
 import java.util.Scanner;
 public class prefix {
-
-public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        // Input size
-        System.out.print("Enter size of the array: ");
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-
-        // Input array elements
-        System.out.println("Enter the elements of the array:");
-        for (
-                int i = 0;
-                i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-
-        // Calculate total sum of the array
+public static boolean canBeSplit(int[] arr) {
         int totalSum = 0;
-        for (
-                int i = 0;
-                i < n; i++) {
-            totalSum += arr[i];
+        for (int num : arr) {
+            totalSum += num;
         }
 
-        // Initialize left sum
-        int leftSum = 0;
-        boolean found = false;
-
-        // Traverse the array and check
-        for (
-                int i = 0;i<n;i++) {
-            int rightSum = totalSum-leftSum-arr[i];
-            if (leftSum == rightSum) {
-                System.out.println("Array can be split at index " +i);
-                found = true;
-                break;
+        int prefixSum = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            prefixSum += arr[i];
+            int suffixSum = totalSum - prefixSum;
+            if (prefixSum == suffixSum) {
+                return true;
             }
-            leftSum += arr[i];
         }
 
-        if (!found) {
-            System.out.println("Array cannot be split.");
-        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 3};
+        int[] arr2 = {1, 2, 3, 5};
+
+        System.out.println(canBeSplit(arr1)); // true
+        System.out.println(canBeSplit(arr2)); // false
     }
 }
-
 
 // TC - O(n)
 // SC - O(n)
