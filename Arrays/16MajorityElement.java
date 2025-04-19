@@ -3,53 +3,29 @@
 
 
 
-public class MajorityElementFinder {
+class Solution {
+    public int majorityElement(int[] nums) {
+          
+        int n = nums.length;
+        int atleast = n/2;
+        HashMap<Integer,Integer> map = new HashMap<>();
 
-    public static Integer findMajorityElement(int[] nums) {
-        // Step 1: Find candidate
-        int candidate = 0;
-        int count = 0;
+        for(int num: nums){
+            map.put(num, map.getOrDefault(num,0)+1);
 
-        for (int num : nums) {
-            if (count == 0) {
-                candidate = num;
-                count = 1;
-            } else if (num == candidate) {
-                count++;
-            } else {
-                count--;
+        }
+
+        for(int key: map.keySet()){
+            if(map.get(key)> atleast){
+                return key;
             }
         }
-
-        // Step 2: Verify candidate
-        count = 0;
-        for (int num : nums) {
-            if (num == candidate) {
-                count++;
-            }
-        }
-
-        if (count > nums.length / 2) {
-            return candidate;
-        } else {
-            return null; // No majority element
-        }
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {2, 2, 1, 2, 3, 2, 2};
-        Integer result = findMajorityElement(arr);
-
-        if (result != null) {
-            System.out.println("Majority element is: " + result);
-        } else {
-            System.out.println("No majority element found.");
-        }
+     return -1;
     }
 }
 
 
 //TC - O(n)
-//SC - O(1)
+//SC - O(n)
 
 
