@@ -11,23 +11,24 @@ public class MaxFrequencyElement {
         // HashMap to store the frequency of each element
         Map<Integer, Integer> freqMap = new HashMap<>();
         
-        // Populate the frequency map
-        for (int num : arr) {
-            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+           int n= arr.length;
+        
+        for(int num :arr){
+            map.put(num, map.getOrDefault(num,0)+1);
         }
-
-        // Find the element with the maximum frequency
-        int maxFreq = 0;
-        int maxFreqElement = -1;
-
-        for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
-            if (entry.getValue() > maxFreq) {
-                maxFreq = entry.getValue();
-                maxFreqElement = entry.getKey();
+        int maxfreq =0;
+        int mostFreqElem = -1; 
+        
+            for (int key : map.keySet()) {
+            int freq = map.get(key);
+            if (freq > maxfreq) {
+                maxfreq = freq;
+                mostFreqElem = key;
             }
         }
-
-        return maxFreqElement;
+        
+        return mostFreqElem; 
+        
     }
 
     public static void main(String[] args) {
