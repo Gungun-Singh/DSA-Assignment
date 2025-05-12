@@ -1,0 +1,27 @@
+45. Explain the concept of priority queues and their applications in algorithm design. 
+
+Priority Queue:
+A priority queue is a special type of queue where each element is associated with a priority. In a priority queue:
+
+The element with the highest priority is dequeued first, not necessarily the one that was enqueued first.
+It is often implemented using a heap (binary heap, Fibonacci heap, etc.), which allows efficient insertion, deletion, and access to the element with the highest priority.
+
+There are two types of priority queues:
+
+Max Priority Queue: The element with the maximum priority is dequeued first.
+Min Priority Queue: The element with the minimum priority is dequeued first.
+
+Operations:
+Insert: Add an element to the queue with a specified priority.
+Delete: Remove the element with the highest priority.
+Peek/Top: View the element with the highest priority without removing it.
+
+Applications of Priority Queues in Algorithm Design:
+1.Dijkstra’s Algorithm (Shortest Path Problem):
+Priority queues are used in Dijkstra's algorithm to efficiently select the node with the smallest tentative distance for graph traversal.
+
+2.Huffman Coding (Data Compression):
+Priority queues are used to build a Huffman tree for encoding data in a way that minimizes the total number of bits used for encoding the input data.
+
+3.Merge K Sorted Lists:
+Priority queues can be used to merge multiple sorted lists (for example, merging k sorted input streams) by repeatedly extracting the smallest element from the queue.
